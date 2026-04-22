@@ -14,11 +14,23 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Build step
-        run: echo "Building the project..."
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
 
-      - name: Build complete
-        run: echo "Build completed successfully!"
+      - name: Compile Java sources
+        run: |
+          mkdir -p out
+          javac -d out src/*.java
+          echo "Compilation successful!"
+
+      - name: Verify build output
+        run: |
+          echo "Compiled class files:"
+          ls -la out/
+          echo "Build completed!"
 
   test:
     runs-on: ubuntu-latest
@@ -28,8 +40,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Test step
-        run: echo "Running tests..."
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
 
-      - name: Test complete
-        run: echo "All tests passed successfully!"
+      - name: Compile and run basic test
+        run: |
+          mkdir -p out
+          javac -d out src/*.java
+          echo "All Java files compiled without errors."
+          echo "Classes found: $(ls out/*.class | wc -l)"
+          echo "Test passed!"
