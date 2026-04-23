@@ -22,21 +22,16 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
+          cache: maven
 
-      - name: Compile Java sources
-        run: |
-          mkdir -p out
-          javac -d out src/*.java
-          echo "Compilation successful!"
+      - name: Build with Maven
+        run: mvn clean compile -q
 
-      - name: Verify build output
-        run: |
-          echo "Compiled class files:"
-          ls -la out/
-          echo "Build completed!"
+      - name: Build complete
+        run: echo "Spring Boot build completed successfully!"
 
   test:
-    runs-on: ubuntu-latesttt
+    runs-on: ubuntu-latest
     needs: build
 
     steps:
@@ -48,11 +43,10 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
+          cache: maven
 
-      - name: Compile and run basic test
-        run: |
-          mkdir -p out
-          javac -d out src/*.java
-          echo "All Java files compiled without errors."
-          echo "Classes found: $(ls out/*.class | wc -l)"
-          echo "Test passed!"
+      - name: Run tests
+        run: mvn test -q
+
+      - name: Test complete
+        run: echo "All tests passed successfully!"
