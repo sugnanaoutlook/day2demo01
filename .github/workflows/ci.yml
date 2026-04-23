@@ -36,7 +36,7 @@ jobs:
           echo "Build completed!"
 
   test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latesttt
     needs: build
 
     steps:
