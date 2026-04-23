@@ -19,4 +19,9 @@ public class HelloController {
     public Map<String, String> health() {
         return Map.of("status", "UP");
     }
+
+    @GetMapping("/welcome")
+    public Map<String, String> welcome() {
+        return Map.of("message", "Welcome to Day2 Demo Spring Boot Application!", "status", "success");
+    }
 }
