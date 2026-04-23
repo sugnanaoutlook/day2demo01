@@ -1,0 +1,52 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cmd:*)",
+      "Bash(node:*)",
+      "mcp__ide__getDiagnostics",
+      "Bash(mysql:*)",
+      "Bash(__NEW_LINE_c5d9dffdaf613e71__ echo:*)",
+      "Bash(echo $result:*)",
+      "Bash(__NEW_LINE_c19d2593fb820a4e__ echo:*)",
+      "Bash(__NEW_LINE_ccbf1e93f7989fbf__ echo:*)",
+      "Bash(claude mcp:*)",
+      "Bash(claude config:*)"
+    ]
+  },
+  "mcpServers": {
+    "git": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@cyanheads/git-mcp-server"
+      ],
+      "env": {
+        "GIT_REPOS_PATH": "C:/Users/Administrator/Desktop/workspace/testspace2/day2demo01"
+      }
+    },
+    "mysql": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@benborla29/mcp-server-mysql"
+      ],
+      "env": {
+        "MYSQL_HOST": "127.0.0.1",
+        "MYSQL_PORT": "3306",
+        "MYSQL_USER": "root",
+        "MYSQL_PASS": "root",
+        "MYSQL_DB": "test01"
+      }
+    },
+    "github": {                                                                                                                                                                        
+	    "command": "npx",                                                                                                                                                                
+		  "args": [                                                                                                                                                                        
+			  "-y",                                                                                                                                                                          
+			"@modelcontextprotocol/server-github"                                                                                                                                          
+		],                                                                                                                                                                               
+		"env": {                                                                                                                                                                         
+			"GITHUB_PERSONAL_ACCESS_TOKEN": "YOUR_GITHUB_PAT_HERE"                                                                                                                         
+		}                                                                                                                                                                                
+	  } 
+  }
+}
